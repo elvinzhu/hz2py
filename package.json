@@ -1,0 +1,42 @@
+{
+  "name": "hz2py",
+  "version": "1.0.0",
+  "description": "汉字转拼音，可带声调",
+  "main": "dist/index.js",
+  "module": "index.esm.js",
+  "scripts": {
+    "build": "tsc && rollup -c",
+    "test": "jest",
+    "start": "http-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elvinzhu/hz2py.git"
+  },
+  "keywords": [
+    "汉字",
+    "转",
+    "拼音"
+  ],
+  "author": "elvin zhu",
+  "files": [
+    "dist/hz2py.min.js",
+    "dist/index.js",
+    "dist/index.esm.js",
+    "index.d.ts"
+  ],
+  "license": "ISC",
+  "sideEffects": false,
+  "typings": "./index.d.ts",
+  "bugs": {
+    "url": "https://github.com/elvinzhu/hz2py/issues"
+  },
+  "homepage": "https://github.com/elvinzhu/hz2py#readme",
+  "devDependencies": {
+    "jest": "^25.1.0",
+    "rollup": "^1.31.1",
+    "rollup-plugin-banner": "^0.2.1",
+    "rollup-plugin-terser": "^5.2.0",
+    "typescript": "^3.7.5"
+  }
+}
