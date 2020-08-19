@@ -1,13 +1,12 @@
 {
   "name": "hz2py",
   "version": "1.0.0",
-  "description": "汉字转拼音，可带声调",
+  "description": "Transform Chinese characters into Chinese Pinyin. 汉字转拼音，可带声调.",
   "main": "dist/index.js",
   "module": "index.esm.js",
   "scripts": {
     "build": "tsc && rollup -c",
-    "test": "jest",
-    "start": "http-server"
+    "test": "npm run build && jest"
   },
   "repository": {
     "type": "git",
