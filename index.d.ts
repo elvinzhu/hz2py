@@ -6,7 +6,7 @@
  */
 export default function hz2py(targetStr: string, options?: IOptions): string;
 /**
- * transform Chinese pinyin that with tone to normal letter respectively.
+ * transform Chinese pinyin that with tone to normal character respectively.
  *
  * @param py Chinese pinyin with tone（带音调的拼音）
  */
