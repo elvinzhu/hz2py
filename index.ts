@@ -30,7 +30,7 @@ export default function hz2py(targetStr: string, options: IOptions = {}) {
 }
 
 /**
- * transform Chinese pinyin that with tone to normal character respectively.
+ * transform Chinese pinyin with tones to normal letter respectively.
  * 
  * @param py Chinese pinyin with tone（带音调的拼音）
  */
@@ -43,7 +43,7 @@ export function tone2Char(py: string) {
 
 
 /**
- * get initial letters
+ * get initial letters（获取首字母）
  * 
  * @param targetStr Chinese characters
  */
