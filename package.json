@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc && rollup -c",
     "test": "npm run build && jest --reporter=lcov --coverage",
-    "coverage": "codecov --disable=gcov,search -t ebd24777-2e7f-47c0-b00e-7fc5a07456a7"
+    "coverage": "codecov --disable=gcov -t ebd24777-2e7f-47c0-b00e-7fc5a07456a7"
   },
   "repository": {
     "type": "git",
