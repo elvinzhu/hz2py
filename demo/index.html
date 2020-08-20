@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hz2py</title>
+  <script src="../dist/hz2py.min.js"></script>
+  <style>
+    body {
+      padding: 30px
+    }
+
+    textarea {
+      width: 100%;
+    }
+
+    button {
+      margin: 20px 0;
+    }
+
+    .mt20 {
+      margin-top: 20px;
+    }
+  </style>
+  <script>
+    function transform() {
+      py.value = hz2py.default(hz.value, {
+        tone: withTones.checked,
+        delimiter: delimiter.value === '默认' ? ' ' : delimiter.value
+      });
+    }
+  </script>
+</head>
+
+<body>
+  <textarea id="hz" rows="5" placeholder="需要转换的拼音"></textarea>
+  <div class="mt20">
+    分隔符（默认空格）: <input id="delimiter" type="text" style="width: 50px;" value="默认"></input>&nbsp;&nbsp;&nbsp;|&nbsp;
+    <input id="withTones" type="checkbox"></input><label for="withTones">带音调（默认不带）</label>
+  </div>
+  <button onclick="transform()">转换</button>
+  <textarea id="py" rows="5" placeholder="转换结果"></textarea>
+</body>
+
+</html>
