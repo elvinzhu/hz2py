@@ -14,8 +14,10 @@ test('hz2py custom delimiter', () => {
   expect(hz2py(test_words, { delimiter: '' })).toBe('woaiwojia');
 });
 
-test('hz2py with bad aguments', () => {
+test('hz2py/tone2Char/getInitials with bad aguments', () => {
   expect(hz2py(null, { tone: true })).toBe(null);
+  expect(tone2Char('')).toBe('');
+  expect(getInitials(null).length).toBe(0);
 });
 
 test('hz2py with not pinyin', () => {
@@ -23,19 +25,13 @@ test('hz2py with not pinyin', () => {
   expect(hz2py(words)).toBe(words);
 });
 
-test('hz2py with not string', () => {
+test('hz2py/getInitials with not string', () => {
   const words = 2345;
   expect(hz2py(words)).toBe(words);
+  expect(getInitials(words).length).toBe(0);
 });
 
-test('getInitials properly', () => {
+test('getInitials/tone2Char work properly', () => {
   expect(getInitials(test_words).join('')).toBe('wawj');
-});
-
-test('getInitials with bad arguments', () => {
-  expect(getInitials(null).length).toBe(0);
-});
-
-test('tone2Char with bad arguments', () => {
-  expect(tone2Char('')).toBe('');
+  expect(tone2Char('wǒ ài wǒ jiā')).toBe('wo ai wo jia');
 });
