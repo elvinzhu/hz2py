@@ -6,7 +6,8 @@
   "module": "index.esm.js",
   "scripts": {
     "build": "tsc && rollup -c",
-    "test": "npm run build && jest"
+    "test": "npm run build && jest --reporter=lcov --coverage",
+    "coverage": "codecov --disable=gcov"
   },
   "repository": {
     "type": "git",
@@ -32,7 +33,9 @@
   },
   "homepage": "https://github.com/elvinzhu/hz2py#readme",
   "devDependencies": {
+    "codecov": "^3.7.2",
     "jest": "^25.1.0",
+    "nyc": "^15.1.0",
     "rollup": "^1.31.1",
     "rollup-plugin-banner": "^0.2.1",
     "rollup-plugin-terser": "^5.2.0",

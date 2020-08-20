@@ -1,8 +1,7 @@
 /**
  * transform Chinese characters to Chinese Pinyin
- *
  * @param targetStr Chinese characters
- * @param tone      if to have tone（是否包含音调）
+ * @param options   options
  */
 export default function hz2py(targetStr: string, options?: IOptions): string;
 /**

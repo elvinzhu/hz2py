@@ -7,9 +7,8 @@ let py_map = new Map<string, string>();
 
 /**
  * transform Chinese characters to Chinese Pinyin
- * 
  * @param targetStr Chinese characters
- * @param tone      if to have tone（是否包含音调）
+ * @param options   options
  */
 export default function hz2py(targetStr: string, options: IOptions = {}) {
   if (targetStr && typeof targetStr === 'string') {
@@ -39,7 +38,7 @@ export function tone2Char(py: string) {
   if (!tone_regex) {
     tone_regex = new RegExp(Object.keys(ToneMap).join('|'), 'g');
   }
-  return py && py.replace(tone_regex, char => ToneMap[char] || char);
+  return py && py.replace(tone_regex, char => ToneMap[char]);
 }
 
 
