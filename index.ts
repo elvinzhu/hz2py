@@ -48,7 +48,7 @@ export function tone2Char(py: string) {
  * @param targetStr Chinese characters
  */
 export function getInitials(targetStr: string) {
-  if (targetStr) {
+  if (targetStr && typeof targetStr === 'string') {
     const delimiter = ',';
     return hz2py(targetStr, { delimiter }).split(delimiter).map(item => item.charAt(0));
   }

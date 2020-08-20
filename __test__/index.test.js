@@ -18,6 +18,16 @@ test('hz2py with bad aguments', () => {
   expect(hz2py(null, { tone: true })).toBe(null);
 });
 
+test('hz2py with not pinyin', () => {
+  const words = 'asdf(';
+  expect(hz2py(words)).toBe(words);
+});
+
+test('hz2py with not string', () => {
+  const words = 2345;
+  expect(hz2py(words)).toBe(words);
+});
+
 test('getInitials properly', () => {
   expect(getInitials(test_words).join('')).toBe('wawj');
 });
