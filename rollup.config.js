@@ -1,7 +1,7 @@
 import banner from 'rollup-plugin-banner';
 import { terser } from 'rollup-plugin-terser';
 
-const BannerStr = `<%= pkg.name %> v<%= pkg.version %>
+const BannerStr = `<%= pkg.name %>@v<%= pkg.version %> https://github.com/elvinzhu/<%= pkg.name %>
 (c) 2014-${new Date().getFullYear()} by <%= pkg.author %>
 Released under the MIT License.`;
 
