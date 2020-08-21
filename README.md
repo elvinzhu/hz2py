@@ -1,9 +1,9 @@
 # transform Chinese characters into Chinese Pinyin.
 
 [![Build Status](https://travis-ci.org/elvinzhu/hz2py.svg?branch=master)](https://travis-ci.org/elvinzhu/hz2py)
-[![codecov](https://codecov.io/gh/elvinzhu/hz2py/branch/master/graph/badge.svg)](https://codecov.io/gh/elvinzhu/hz2py)
+[![codecov](https://codecov.io/gh/elvinzhu/hz2py/branch/master/graph/badge.svg?v=0)](https://codecov.io/gh/elvinzhu/hz2py)
 
-汉字转拼音，可带声调. 支持 20850 个汉字，不包含多音字. 未压缩包体总大小 80K.
+汉字转拼音，可带声调。 支持 20850 个汉字，不包含多音字。 压缩后体积 76K。
 
 # usage
 
