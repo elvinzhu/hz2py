@@ -11,7 +11,7 @@ let py_map = new Map<string, string>();
  * @param options   options
  */
 export default function hz2py(targetStr: string, options: IOptions = {}) {
-  if (targetStr && typeof targetStr === 'string') {
+  if (hasStringValue(targetStr)) {
     const config = { tone: false, delimiter: ' ', ...options };
     if (py_map.size === 0) {
       for (let key in PYDict) {
@@ -30,30 +30,42 @@ export default function hz2py(targetStr: string, options: IOptions = {}) {
 }
 
 /**
- * transform Chinese pinyin with tones to normal letter respectively.
- * 
- * @param py Chinese pinyin with tone（带音调的拼音）
- */
-export function tone2Char(py: string) {
-  if (!tone_regex) {
-    tone_regex = new RegExp(Object.keys(ToneMap).join('|'), 'g');
-  }
-  return py && py.replace(tone_regex, char => ToneMap[char]);
-}
-
-
-/**
  * get initial letters（获取首字母）
  * 
  * @param targetStr Chinese characters
  */
 export function getInitials(targetStr: string) {
-  if (targetStr && typeof targetStr === 'string') {
+  if (hasStringValue(targetStr)) {
     const delimiter = ',';
     return hz2py(targetStr, { delimiter }).split(delimiter).map(item => item.charAt(0));
   }
   return []
 }
+
+/**
+ * transform Chinese pinyin with tones to normal letter respectively.
+ * 
+ * @param py Chinese pinyin with tone（带音调的拼音）
+ */
+export function tone2Char(py: string) {
+  if (hasStringValue(py)) {
+    if (!tone_regex) {
+      tone_regex = new RegExp(Object.keys(ToneMap).join('|'), 'g');
+    }
+    return py.replace(tone_regex, char => ToneMap[char]);
+  }
+  return py;
+}
+
+/**
+ * check if it is a not empty string
+ * 
+ * @param value 
+ */
+export function hasStringValue(value: any) {
+  return !!value && typeof value === 'string';
+}
+
 
 interface IOptions {
   /**

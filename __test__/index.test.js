@@ -1,37 +1,43 @@
-import hz2py, { getInitials, tone2Char } from '../index.ts';
+import hz2py, { getInitials, tone2Char, hasStringValue } from '../index.ts';
 
+const normal_letters = 'abCd';
 const test_words = '我爱我家';
+const num_arg = 12345;
 
-test('hz2py with tone', () => {
-  expect(hz2py(test_words, { tone: true })).toBe('wǒ ài wǒ jiā');
+test('hasStringValue work properly', () => {
+  expect(hasStringValue(normal_letters)).toBe(true);
+  expect(hasStringValue(num_arg)).toBe(false);
+  expect(hasStringValue('')).toBe(false);
+  expect(hasStringValue(null)).toBe(false);
+  expect(hasStringValue()).toBe(false);
+  expect(hasStringValue(true)).toBe(false);
 });
 
-test('hz2py without tone', () => {
-  expect(hz2py(test_words)).toBe('wo ai wo jia');
-});
-
-test('hz2py custom delimiter', () => {
-  expect(hz2py(test_words, { delimiter: '' })).toBe('woaiwojia');
-});
-
-test('hz2py/tone2Char/getInitials with bad aguments', () => {
-  expect(hz2py(null, { tone: true })).toBe(null);
-  expect(tone2Char('')).toBe('');
-  expect(getInitials(null).length).toBe(0);
-});
-
-test('hz2py with not pinyin', () => {
-  const words = 'asdf(';
-  expect(hz2py(words)).toBe(words);
-});
-
-test('hz2py/getInitials with not string', () => {
-  const words = 2345;
-  expect(hz2py(words)).toBe(words);
-  expect(getInitials(words).length).toBe(0);
-});
-
-test('getInitials/tone2Char work properly', () => {
-  expect(getInitials(test_words).join('')).toBe('wawj');
+test('tone2Char works properly', () => {
+  // default
   expect(tone2Char('wǒ ài wǒ jiā')).toBe('wo ai wo jia');
+  expect(tone2Char(normal_letters)).toBe(normal_letters);
+  // bad arguments
+  expect(tone2Char('')).toBe('');
+  expect(tone2Char(null)).toBe(null);
+});
+
+test('hz2py works properly', () => {
+  // defalut (without tone)
+  expect(hz2py(test_words)).toBe('wo ai wo jia');
+  // bad arguments
+  expect(hz2py(null)).toBe(null);
+  expect(hz2py(num_arg)).toBe(num_arg);
+  // with tone
+  expect(hz2py(test_words, { tone: true })).toBe('wǒ ài wǒ jiā');
+  // custome delimeter
+  expect(hz2py(test_words, { delimiter: ',' })).toBe('wo,ai,wo,jia');
+});
+
+test('getInitials works properly', () => {
+  // default
+  expect(getInitials(test_words).join('')).toBe('wawj');
+  // bad arguments
+  expect(getInitials(null).length).toBe(0);
+  expect(getInitials(num_arg).length).toBe(0);
 });

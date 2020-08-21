@@ -1,6 +1,6 @@
 {
   "name": "hz2py",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Transform Chinese characters into Chinese Pinyin. 汉字转拼音，可带声调.",
   "main": "dist/index.js",
   "module": "index.esm.js",
