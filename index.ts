@@ -7,6 +7,7 @@ let py_map = new Map<string, string>();
 
 /**
  * transform Chinese characters to Chinese Pinyin
+ * if the character not in the checklist then return itself
  * @param targetStr Chinese characters
  * @param options   options
  */
@@ -22,7 +23,7 @@ export default function hz2py(targetStr: string, options: IOptions = {}) {
     }
     const maxIndex = targetStr.length - 1;
     const result = targetStr.replace(hzReg, (hz, index) => {
-      return py_map.get(hz) + ((index === maxIndex) ? "" : config.delimiter)
+      return (py_map.get(hz) || hz) + ((index === maxIndex) ? '' : config.delimiter)
     });
     return config.tone ? result : tone2Char(result)
   }
@@ -31,20 +32,18 @@ export default function hz2py(targetStr: string, options: IOptions = {}) {
 
 /**
  * get initial letters（获取首字母）
- * 
+ * if the character not in the checklist then return itself
  * @param targetStr Chinese characters
  */
 export function getInitials(targetStr: string) {
   if (hasStringValue(targetStr)) {
-    const delimiter = ',';
-    return hz2py(targetStr, { delimiter }).split(delimiter).map(item => item.charAt(0));
+    return targetStr.split('').map(char => char !== ' ' ? hz2py(char).charAt(0) : char)
   }
   return []
 }
 
 /**
  * transform Chinese pinyin with tones to normal letter respectively.
- * 
  * @param py Chinese pinyin with tone（带音调的拼音）
  */
 export function tone2Char(py: string) {
@@ -59,7 +58,6 @@ export function tone2Char(py: string) {
 
 /**
  * check if it is a not empty string
- * 
  * @param value 
  */
 export function hasStringValue(value: any) {

@@ -3,6 +3,7 @@ import hz2py, { getInitials, tone2Char, hasStringValue } from '../index.ts';
 const normal_letters = 'abCd';
 const test_words = '我爱我家';
 const num_arg = 12345;
+const exception = '乥';
 
 test('hasStringValue work properly', () => {
   expect(hasStringValue(normal_letters)).toBe(true);
@@ -32,6 +33,8 @@ test('hz2py works properly', () => {
   expect(hz2py(test_words, { tone: true })).toBe('wǒ ài wǒ jiā');
   // custome delimeter
   expect(hz2py(test_words, { delimiter: ',' })).toBe('wo,ai,wo,jia');
+  // character that in the checklist
+  expect(hz2py(exception)).toBe(exception);
 });
 
 test('getInitials works properly', () => {
@@ -40,4 +43,6 @@ test('getInitials works properly', () => {
   // bad arguments
   expect(getInitials(null).length).toBe(0);
   expect(getInitials(num_arg).length).toBe(0);
+  // contains whitespace
+  expect(getInitials('我   爱w j')).toEqual(['w', ' ', ' ', ' ', 'a', 'w', ' ', 'j']);
 });
